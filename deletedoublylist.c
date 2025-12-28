@@ -117,27 +117,8 @@ struct node* deleteAtPosition(struct node *head, int pos) {
     return head;
 }
 
-/* Delete by value */
-struct node* deleteByValue(struct node *head, int value) {
-    struct node *temp = head;
-
-    while (temp != NULL && temp->data != value)
-        temp = temp->next;
-
-    if (temp == NULL)
-        return head;
-
-    if (temp->prev != NULL)
-        temp->prev->next = temp->next;
-    else
-        head = temp->next;
-
-    if (temp->next != NULL)
-        temp->next->prev = temp->prev;
-
-    free(temp);
-    return head;
-}
+  
+ 
 
 int main() {
     struct node *head;
@@ -167,3 +148,4 @@ int main() {
 
     return 0;
 }
+
