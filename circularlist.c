@@ -1,0 +1,54 @@
+// linked list using mallac creation and traverse:           //uploaded
+#include<stdio.h>
+#include<stdlib.h>
+struct node{
+    int data;
+    struct node *next;
+};
+//1. creating linked list 
+struct node* createlist(int n){
+    struct node* newNode,*header,*temp;
+    int data,i;
+    newNode=(struct node*)malloc(sizeof(struct node));
+    if(newNode==NULL){
+        printf("Unable to provide memory");
+    }
+    else{
+        printf("entre data of 1st node: ");
+        scanf("%d",&data);
+        newNode->data=data;
+        newNode->next=newNode;
+        header=newNode;
+        temp=newNode;
+        for(i=2;i<=n;i++){
+        newNode=(struct node*)malloc(sizeof(struct node));
+         printf("entre data of node %d: ",i);
+        scanf("%d",&data);
+        newNode->data=data;
+        newNode->next=header;
+        temp->next=newNode;
+        temp=temp->next;
+        }
+        
+    }
+    return header;
+}
+//2. traversal of linked list:
+void traverse(struct node* header){
+struct node* temp;
+     temp=header;
+    do{
+        printf("%d\n",temp->data);
+        temp=temp->next;
+    }while( temp!=header);
+}
+
+int main(){
+    int n;
+    struct node * head;
+    printf("entre total number of nodes: ");
+    scanf("%d",&n);
+   head=createlist(n);
+   traverse(head);
+   return 0;
+}
